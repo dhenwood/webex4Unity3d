@@ -17,10 +17,10 @@ public class OAuthScript : MonoBehaviour
     {
         Web.SetStorageEnabled(false); //The same as Incognito mode
         
-        getAccessToken();
+        getOauthCode();
     }
 
-    async void getAccessToken(){
+    async void getOauthCode(){
         webViewPrefab = GameObject.Find("CanvasWebViewPrefab").GetComponent<CanvasWebViewPrefab>();
         await webViewPrefab.WaitUntilInitialized();
 
@@ -34,13 +34,13 @@ public class OAuthScript : MonoBehaviour
                 String myCode = response.Substring(codeStart, codeFinish - codeStart);
                 Debug.Log("code: " + myCode);
 
-                StartCoroutine(getFinalToken(myCode));
+                StartCoroutine(getOauthToken(myCode));
             }
         };
     }
     
 
-    IEnumerator getFinalToken(string code){
+    IEnumerator getOauthToken(string code){
         WWWForm form = new WWWForm();
         form.AddField("grant_type", "authorization_code");
         form.AddField("client_id", clientId);
