@@ -10,13 +10,12 @@ public class OAuthScript : MonoBehaviour
     string clientId = "<removed>"; // obtained from developer.webex.com when creating Integration
     string clientSecret = "<removed>"; // obtained from developer.webex.com when creating Integration
     string initUrl = "<removed>"; // obtained from developer.webex.com when creating Integration
-
-    //WebViewPrefab webViewPrefab;
+    
     CanvasWebViewPrefab webViewPrefab;
 
     void Start()
     {
-        Web.SetStorageEnabled(false); //Effectively the same as Incognito mode
+        Web.SetStorageEnabled(false); //The same as Incognito mode
         
         getAccessToken();
     }
